@@ -4,7 +4,7 @@ library(patchwork)
 library(devtools)
 
 
-setwd("~/Documents/科研/个人负责项目/IARC_HPV group/Fig2/")
+setwd("~/Documents/IARC_HPV group/Fig2/")
 
 ####
 library(circlize)
@@ -77,3 +77,36 @@ HPV_mid = HPV82[,c(2,5)];HPV_mid$Viral_Type = "HPV"
 Human_mid = HPV82[,c(3,4)]
 
 circos.genomicLink(Human_mid, HPV_mid,col = "#fb6f92")
+
+
+
+
+
+###figure 3
+library(ggplot2)
+library(tidyverse)
+library(patchwork)
+library(ggpubr)
+library(ggsignif)
+
+p <-ggplot(data_plot, aes(x=variable, y=value),fill = Type) +
+  geom_boxplot(alpha = 1, outlier.shape = NA) + 
+ geom_point(mapping = aes(x=variable, y=value,
+                         color = Type),size = 3, shape = 16) +
+  scale_color_manual(values = c("#123f81","#cf4728","#81b29a"),
+                     name = "Spe") +
+#geom_hline(aes(yintercept = 2.532410), colour="#7a6a56", linetype="dashed") +
+theme(legend.position = 'right',
+        axis.text = element_text(size = 10),
+        axis.text.x = element_text(size = 10,angle = 30, hjust = 1)) +
+  theme(panel.grid.major = element_blank(), #????????
+        panel.grid.minor = element_blank(), #????????
+        panel.border = element_rect(fill=NA,color="black", size=0.5, linetype="solid"), #?߿?
+       
+        panel.background = element_rect(fill = 'white'), #????ɫ
+        plot.background= element_rect(fill="white"))+
+  geom_signif(comparisons = list(c("E1", "E6"),c("E1", "E7"),c("E2", "E7")), 
+              map_signif_level = TRUE)
+
+options(repr.plot.width = 12, repr.plot.height = 6.5)
+p
