@@ -2,12 +2,12 @@ library(dplyr)
 library(tidyverse)
 library(patchwork)
 library(devtools)
+library(circlize)
 
-
-setwd("~/Documents/IARC_HPV group/Fig2/")
+setwd("~/Documents/IARC_HPV group/Fig1/")
 
 ####
-library(circlize)
+
 
 ###
 circos.info()
@@ -78,16 +78,13 @@ Human_mid = HPV82[,c(3,4)]
 
 circos.genomicLink(Human_mid, HPV_mid,col = "#fb6f92")
 
-
-
-
-
-###figure 3
+###figure 2
 library(ggplot2)
 library(tidyverse)
 library(patchwork)
 library(ggpubr)
 library(ggsignif)
+library(reshape2)
 
 p <-ggplot(data_plot, aes(x=variable, y=value),fill = Type) +
   geom_boxplot(alpha = 1, outlier.shape = NA) + 
