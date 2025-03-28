@@ -4,7 +4,7 @@ library(patchwork)
 library(devtools)
 library(circlize)
 
-setwd("~/Documents/IARC_HPV group/Fig1/")
+setwd("~/Documents/IARC_HPV group/Figs/")
 
 ####
 
@@ -78,7 +78,7 @@ Human_mid = HPV82[,c(3,4)]
 
 circos.genomicLink(Human_mid, HPV_mid,col = "#fb6f92")
 
-###figure 2
+###HPV genes comparison
 library(ggplot2)
 library(tidyverse)
 library(patchwork)
